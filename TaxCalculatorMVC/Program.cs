@@ -1,3 +1,8 @@
+using TaxCalculatorMVC.Application.Interfaces;
+using TaxCalculatorMVC.Application.Services;
+using TaxCalculatorMVC.Infrastructure.InMemory;
+using TaxCalculatorMVC.Infrastructure.Standard;
+
 namespace TaxCalculatorMVC
 {
     public class Program
@@ -8,6 +13,11 @@ namespace TaxCalculatorMVC
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            //Services registration:
+            builder.Services.AddScoped<ITaxCalculator, TaxCalculator>();
+            builder.Services.AddSingleton<IStandardRateProvider, StandardRateProvider>();
+            builder.Services.AddSingleton<ICustomRateRepository, InMemoryCustomRateRepository>();
 
             var app = builder.Build();
 
