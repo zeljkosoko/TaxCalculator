@@ -6,7 +6,6 @@ namespace TaxCalculatorMVC.Controllers
 {
     public class HomeController : Controller
     {
-        //Test 11
         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger)
