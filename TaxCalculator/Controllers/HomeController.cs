@@ -1,12 +1,11 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using TaxCalculatorMVC.Models;
+using TaxCalculator.Models;
 
-namespace TaxCalculatorMVC.Controllers
+namespace TaxCalculator.Controllers
 {
     public class HomeController : Controller
     {
-        //Test 11
         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger)
