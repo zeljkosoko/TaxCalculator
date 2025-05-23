@@ -26,7 +26,6 @@ namespace TaxCalculatorMVC.Tests
         [Fact]
         public void ShouldReturnLatestCustomRate()
         {
-            // Arrange
             _calculator.SetCustomTaxRate(Commodity.Alcohol, 0.68);
             Thread.Sleep(1000); 
             _calculator.SetCustomTaxRate(Commodity.Alcohol, 0.69);
@@ -35,10 +34,8 @@ namespace TaxCalculatorMVC.Tests
 
             var now = DateTime.UtcNow;
 
-            // Act
             var rate = _calculator.GetTaxRateForDateTime(Commodity.Alcohol, now);
 
-            // Assert
             Assert.Equal(0.70, rate, precision: 2);
         }
     }

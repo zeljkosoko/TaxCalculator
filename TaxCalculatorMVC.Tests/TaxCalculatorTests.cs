@@ -24,7 +24,7 @@ namespace TaxCalculatorMVC.Tests
             _taxCalculator = new TaxCalculator(_standardProvider, _customRepo);
         }
 
-        //Standardna stopa kada nema prilagođenih.
+        //Standard rate when there are no custom ones.
         [Fact]
         public void Should_Return_Standard_Rate_When_No_Custom_Rates()
         {
@@ -32,7 +32,7 @@ namespace TaxCalculatorMVC.Tests
             Assert.Equal(0.06, rate, 3);
         }
 
-        //Poslednja uneta stopa za GetCurrentTaxRate
+        //The last rate entered for GetCurrent Tax Rate
         [Fact]
         public void Should_Return_Latest_Custom_Rate()
         {
@@ -49,7 +49,7 @@ namespace TaxCalculatorMVC.Tests
             Assert.Equal(0.12, rate, 3);
         }
 
-        //Stopa u određeno vreme proverom tačnog ponašanja vremenskog raspona.
+        //Rate at a specific time by checking the exact behavior of the time range.
         [Fact]
         public void Should_Return_Rate_That_Was_Active_At_Specific_Date()
         {
@@ -73,7 +73,7 @@ namespace TaxCalculatorMVC.Tests
             Assert.Equal(0.09, rate3, 3);
         }
 
-        //Fallback na standardnu stopu ako je upit za vreme pre unetih stopa.
+        //Fallback to standard rate if the query is for a time before the entered rates.
         [Fact]
         public void Should_Fallback_To_Standard_If_Date_Before_Custom()
         {
