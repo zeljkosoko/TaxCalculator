@@ -38,7 +38,7 @@ namespace TaxCalculatorMVC
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+                pattern: "{controller=Tax}/{action=Index}/{id?}");
 
             app.Run();
         }
