@@ -1,0 +1,47 @@
+﻿@using TaxCalculatorMVC.Application.Enums
+
+@{
+    ViewData["Title"] = "Tax Calculator";
+}
+
+<h2>Tax Calculator</h2>
+
+@if (ViewBag.Message != null)
+{
+    <p style="color:green;">@ViewBag.Message</p>
+}
+
+<form method="post" asp-controller="Tax" asp-action="SetCustomRate">
+    <h4>Set custom rate</h4>
+    <select name="commodity">
+        @foreach(var item in Enum.GetValues(typeof(Commodity)))
+        {
+            <option value="@item">@item</option>
+        }
+    </select>
+    <input type="number" name="rate" step="0.01" placeholder="for example: 0.15" />
+    <button type="submit">SUBMIT</button>
+</form>
+
+<form method="get" asp-controller="Tax" asp-action="GetCurrentRate">
+    <h4>Show current rate</h4>
+    <select name="commodity">
+        @foreach(var item in Enum.GetValues(typeof(Commodity)))
+        {
+            <option value="@item">@item</option>
+        }
+    </select>
+    <button type="submit">SHOW</button>
+</form>
+
+<form method="get" asp-controller="Tax" asp-action="GetRateForDate">
+    <h4>Show rate for the date</h4>
+    <select name="commodity">
+        @foreach(var item in Enum.GetValues(typeof(Commodity)))
+        {
+            <option value="@item">@item</option>
+        }
+    </select>
+    <input type="datetime-local" name="date" />
+    <button type="submit">SHOW</button>
+</form>

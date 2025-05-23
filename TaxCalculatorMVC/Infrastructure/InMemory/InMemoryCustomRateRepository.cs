@@ -17,12 +17,14 @@ namespace TaxCalculatorMVC.Infrastructure.InMemory
 
             lock (list)
             {
-                var existing = list.FirstOrDefault(r => Math.Abs((r.TimestampUtc - timestampUtc).TotalSeconds) < 1);
-                if (existing != default)
-                    list.Remove(existing);
+                var index = list.FindIndex(r => Math.Abs((r.TimestampUtc - timestampUtc).TotalSeconds) < 1);
+                if (index >= 0)
+                    list.RemoveAt(index);
 
                 list.Add((timestampUtc, rate));
             }
+
+            Console.WriteLine($"SAVE: {commodity} @ {timestampUtc} = {rate}");
         }
 
         public List<(DateTime TimestampUtc, double Rate)> GetRates(Commodity commodity)
